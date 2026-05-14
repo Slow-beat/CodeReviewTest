@@ -1,0 +1,63 @@
+src/services/task_service.py
+  406c94f1152378a7 1-22 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a054b0360f41eff62556491","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Range":[1,22]}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "3ec714322bb09aac1e353d7d7a2a5703833def32",
+  "prompts": {
+    "406c94f1152378a7": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a053e82ddaabf6a819916bc",
+        "model": "gpt-5.4__dev"
+      },
+      "human_author": "xiangziliang <xiangziliang@bytedance.com>",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 8,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  },
+  "attestation_metadata": {
+    "src/services/task_service.py": [
+      {
+        "hash": "406c94f1152378a7",
+        "line_ranges": [
+          {
+            "Range": [
+              1,
+              22
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a054b0360f41eff62556491",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Range": [
+                  1,
+                  22
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "406c94f1152378a7": {
+      "tool": "trae",
+      "conversation_id": "6a053e82ddaabf6a819916bc",
+      "session_id": "6a053e82ddaabf6a819916bc",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
