@@ -15,8 +15,10 @@ python app.py
 
 - `GET /health` 健康检查
 - `GET /api/tasks` 获取任务列表
+- `GET /api/tasks/<task_id>` 获取任务详情和操作入口
 - `POST /api/tasks` 创建任务
 - `POST /api/tasks/<task_id>/share` 共享任务给其他用户
+- `GET /api/tasks/<task_id>/export` 导出任务内容
 
 共享接口请求体示例：
 
@@ -28,13 +30,22 @@ python app.py
 }
 ```
 
+导出接口请求参数示例：
+
+```text
+GET /api/tasks/1/export?actor_id=u100&download_name=task-1.txt
+```
+
 ## 项目结构
 
 - `app.py`: Flask 应用入口
+- `src/routes/exports.py`: 任务导出路由
 - `src/routes/shares.py`: 任务共享路由
 - `src/routes/tasks.py`: 任务相关路由
+- `src/services/export_service.py`: 任务导出服务
 - `src/services/share_service.py`: 任务共享服务
 - `src/services/task_service.py`: 任务服务
 - `src/storage.py`: 内存数据
 - `src/utils/validators.py`: 参数校验
+- `docs/export-api-draft.md`: 导出接口草稿文档
 - `docs/share-api-draft.md`: 共享接口草稿文档
