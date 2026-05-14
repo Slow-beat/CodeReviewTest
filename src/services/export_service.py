@@ -11,6 +11,8 @@ def export_task(task_id: int, actor_id: str, download_name: str):
     task = get_task(task_id)
     if not task:
         raise ValueError("task not found")
+    if task["owner_id"] != actor_id:
+        raise PermissionError("forbidden")
 
     safe_name = sanitize_download_name(download_name)
     export_path = EXPORT_DIR / safe_name

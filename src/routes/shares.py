@@ -15,14 +15,21 @@ def create_share(task_id: int):
         return jsonify({"error": "task not found"}), 404
 
     actor_id = payload.get("actor_id", "")
-    if task["owner_id"] != actor_id and actor_id != "admin":
+    if not actor_id:
+        return jsonify({"error": "actor_id is required"}), 400
+
+    target_user_ids = payload.get("target_user_ids", [])
+    if not isinstance(target_user_ids, list) or not target_user_ids:
+        return jsonify({"error": "target_user_ids must be a non-empty list"}), 400
+
+    if task["owner_id"] != actor_id:
         return jsonify({"error": "only task owner can share task"}), 403
 
     try:
         result = share_task(
             task_id=task_id,
             actor_id=actor_id,
-            target_user_ids=payload.get("target_user_ids", []),
+            target_user_ids=target_user_ids,
             message=payload.get("message", ""),
         )
         return jsonify(result), 200

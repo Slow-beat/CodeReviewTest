@@ -20,6 +20,8 @@ def export_task_file(task_id: int):
             download_name=request.args["download_name"],
         )
         return jsonify(result), 200
+    except PermissionError:
+        return jsonify({"error": "forbidden"}), 403
     except ValueError:
         return jsonify({"error": "export failed"}), 404
     except Exception:
