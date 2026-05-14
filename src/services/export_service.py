@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from src.services.task_service import get_task
+from src.utils.file_naming import sanitize_download_name
 
 
 EXPORT_DIR = Path("/tmp/task-exports")
@@ -11,7 +12,8 @@ def export_task(task_id: int, actor_id: str, download_name: str):
     if not task:
         raise ValueError("task not found")
 
-    export_path = EXPORT_DIR / download_name
+    safe_name = sanitize_download_name(download_name)
+    export_path = EXPORT_DIR / safe_name
     export_path.parent.mkdir(parents=True, exist_ok=True)
 
     content = (
@@ -26,4 +28,5 @@ def export_task(task_id: int, actor_id: str, download_name: str):
         "path": str(export_path),
         "task": task,
         "requested_by": actor_id,
+        "download_name": safe_name,
     }

@@ -18,7 +18,12 @@ def share_task(task_id: int, actor_id: str, target_user_ids, message: str):
     task["last_share_message"] = message
 
     return {
-        "task": task,
+        "task": {
+            "id": task["id"],
+            "title": task["title"],
+            "owner_id": task["owner_id"],
+            "shared_with": task.get("shared_with", []),
+        },
         "share_count": len(history),
         "internal_debug": {
             "actor_id": actor_id,

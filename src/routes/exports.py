@@ -20,5 +20,7 @@ def export_task_file(task_id: int):
             download_name=request.args["download_name"],
         )
         return jsonify(result), 200
-    except Exception as exc:
-        return jsonify({"error": str(exc), "task_id": task_id}), 500
+    except ValueError:
+        return jsonify({"error": "export failed"}), 404
+    except Exception:
+        return jsonify({"error": "export failed"}), 500
